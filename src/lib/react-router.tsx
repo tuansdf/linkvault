@@ -1,8 +1,28 @@
-import { createBrowserRouter } from "react-router-dom";
-import { RouterProvider as RRouterProvider } from "react-router-dom";
-import HomePage from "~/pages/home-page";
+import {
+  Outlet,
+  RouterProvider as RRouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
+import { HomeLayout, HomePage } from "~/pages";
 
-const router = createBrowserRouter([
+const authedRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <HomeLayout>
+        <Outlet />
+      </HomeLayout>
+    ),
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+    ],
+  },
+]);
+
+const notAuthedRouter = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
@@ -10,6 +30,9 @@ const router = createBrowserRouter([
 ]);
 
 const RouterProvider = () => {
+  const isAuthed = true;
+  const router = isAuthed ? authedRouter : notAuthedRouter;
+
   return <RRouterProvider router={router} />;
 };
 

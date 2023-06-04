@@ -1,7 +1,8 @@
 {
   "name": "linkvault",
-  "private": true,
   "version": "0.0.0",
+  "author": "Nguyen Anh Tuan",
+  "license": "GPL-3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

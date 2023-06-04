@@ -29,11 +29,9 @@ const notAuthedRouter = createBrowserRouter([
   },
 ]);
 
-const RouterProvider = () => {
+export const RouterProvider = () => {
   const isAuthed = true;
   const router = isAuthed ? authedRouter : notAuthedRouter;
 
   return <RRouterProvider router={router} />;
 };
-
-export default RouterProvider;

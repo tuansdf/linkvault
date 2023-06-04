@@ -2,12 +2,18 @@ import { MantineProvider as RMantineProvider } from "@mantine/core";
 import { PropsWithChildren } from "react";
 
 type Props = PropsWithChildren;
-const MantineProvider = ({ children }: Props) => {
+
+export const MantineProvider = ({ children }: Props) => {
   return (
-    <RMantineProvider withGlobalStyles withNormalizeCSS>
+    <RMantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        colorScheme: "dark",
+        fontFamily: "Open Sans Variable, sans-serif",
+      }}
+    >
       {children}
     </RMantineProvider>
   );
 };
-
-export default MantineProvider;

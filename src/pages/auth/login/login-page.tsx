@@ -1,4 +1,5 @@
-import { Box, Text } from "@mantine/core";
+import { Anchor, Box, Text, Title } from "@mantine/core";
+import { Link } from "react-router-dom";
 import { LoginForm } from "~/features/auth";
 
 export const LoginPage = () => {
@@ -9,16 +10,26 @@ export const LoginPage = () => {
         width: "100%",
       }}
     >
-      <Text
+      <Title
+        order={2}
         sx={(theme) => ({
-          marginBottom: theme.spacing.xs,
-          fontWeight: "bold",
-          fontSize: theme.fontSizes.xl,
+          marginBottom: theme.spacing.sm,
         })}
       >
         Login
-      </Text>
+      </Title>
       <LoginForm />
+      <Text
+        sx={(theme) => ({
+          marginTop: theme.spacing.xs,
+          fontSize: theme.fontSizes.sm,
+        })}
+      >
+        Don't have an account?{" "}
+        <Anchor component={Link} to="/register">
+          Register
+        </Anchor>
+      </Text>
     </Box>
   );
 };

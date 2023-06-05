@@ -11,6 +11,11 @@ export const MantineProvider = ({ children }: Props) => {
       theme={{
         colorScheme: "dark",
         fontFamily: "Open Sans Variable, sans-serif",
+        globalStyles: () => ({
+          body: {
+            fontDisplay: "fallback",
+          },
+        }),
       }}
     >
       {children}

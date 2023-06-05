@@ -1,2 +1,4 @@
-export * from "~/pages/home-layout";
-export * from "~/pages/home-page";
+export * from "./auth";
+export * from "./home-layout";
+export * from "./home-page";
+export * from "./not-found-page";

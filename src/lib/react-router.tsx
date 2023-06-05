@@ -3,7 +3,14 @@ import {
   RouterProvider as RRouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import { HomeLayout, HomePage } from "~/pages";
+import {
+  AuthLayout,
+  HomeLayout,
+  HomePage,
+  LoginPage,
+  NotFoundPage,
+  RegisterPage,
+} from "~/pages";
 
 const authedRouter = createBrowserRouter([
   {
@@ -25,12 +32,30 @@ const authedRouter = createBrowserRouter([
 const notAuthedRouter = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: (
+      <AuthLayout>
+        <Outlet />
+      </AuthLayout>
+    ),
+    children: [
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 
 export const RouterProvider = () => {
-  const isAuthed = true;
+  const isAuthed = false;
   const router = isAuthed ? authedRouter : notAuthedRouter;
 
   return <RRouterProvider router={router} />;
